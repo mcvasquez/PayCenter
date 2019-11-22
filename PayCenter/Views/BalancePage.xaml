@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:PayCenter.ViewModels"
+             mc:Ignorable="d"
+             x:Class="PayCenter.Views.BalancePage"
+             Title="{Binding Title}"
+             Visual="Material"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#F2F7FB"
+             AutomationId="BalancePage">
+
+    <ContentPage.BindingContext>
+        <vm:BalancePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*" />
+                <RowDefinition Height="45*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="$25.00 USD" FontSize="Title" FontAttributes="Bold" />
+                        <Span Text="{x:Static system:Environment.NewLine}" />
+                        <Span Text="Available" FontSize="Caption" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Grid.Row="1"
+                   Text="{Binding Message}"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small"
+                   />
+
+            <Button Grid.Row="2"
+                    Style="{StaticResource BottomButtonStyle}"
+                    Text="Transfer funds"
+                    AutomationId="TransferFundsButton"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
