@@ -12,6 +12,10 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.6.1" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.6.1" />
+    <PackageReference Include="Mobile.BuildTools" Version="1.4.0.638">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
