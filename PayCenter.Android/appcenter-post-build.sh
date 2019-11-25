@@ -23,7 +23,7 @@ set -e
 ##
 
 # Validate if UI Tests must be executed
-if [ -z $RUN_UITESTS ] || [ "${RUN_UITESTS,,}" != true ]
+if [ -z $RUN_UITESTS ] || [ "$RUN_UITESTS" != true ]
 then
     echo "Skipping UITests"
     exit
