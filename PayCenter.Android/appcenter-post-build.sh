@@ -29,19 +29,19 @@ then
     exit
 fi
 
-if find $APPCENTER_SOURCE_DIRECTORY -name '*.UITest.csproj';
+if find $APPCENTER_SOURCE_DIRECTORY -name '*.UITests.csproj';
 then
 	echo "Building UI test projects:"
-	find $APPCENTER_SOURCE_DIRECTORY -name '*.UITest.csproj' -exec msbuild {} \;
+	find $APPCENTER_SOURCE_DIRECTORY -name '*.UITests.csproj' -exec msbuild {} \;
 else
 	echo "Can't find UI test project"
 	exit 9999
 fi
 echo "Compiled projects to run UI tests:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '*.bin.*UITest.*\.dll' -exec echo {} \;
+find $APPCENTER_SOURCE_DIRECTORY -regex '*.bin.*UITests.*\.dll' -exec echo {} \;
 echo "Running test in App Center Test"
 APPPATH=$APPCENTER_OUTPUT_DIRECTORY/*.apk
-BUILDDIR=$APPCENTER_SOURCE_DIRECTORY/*.UITest/bin/Debug/
+BUILDDIR=$APPCENTER_SOURCE_DIRECTORY/*.UITests/bin/Debug/
 # UITESTTOOL=$APPCENTER_SOURCE_DIRECTORY/packages/Xamarin.UITest.*/tools
 UITESTTOOL=$APPCENTER_SOURCE_DIRECTORY/Xamarin.UITest.Tools
 appcenter test run uitest --app $APP_OWNER --devices $DEVICE_SET --test-series "$APPCENTER_BRANCH-$APPCENTER_TRIGGER" --locale $LOCALE --app-path $APPPATH --build-dir $BUILDDIR --async --uitest-tools-dir $UITESTTOOL --token $APPCENTER_TOKEN
